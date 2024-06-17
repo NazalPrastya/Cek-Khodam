@@ -117,7 +117,11 @@ export default function App() {
 
 function Result({ open, handleOpen, nama, khodam, namaKhodam }) {
   return (
-    <Dialog open={open} handler={handleOpen}>
+    <Dialog
+      open={open}
+      handler={handleOpen}
+      className="max-h-[90vh] overflow-y-scroll"
+    >
       <DialogHeader>Hasil</DialogHeader>
       <DialogBody>
         <h3 className="text-xl font-medium">Nama: {nama}</h3>
