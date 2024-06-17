@@ -37,7 +37,17 @@ const ListKhodam = [
   "Kambing Guling",
   "Babi Hutan",
   "Cangkul",
-  "",
+  "Pop Mie",
+  "Ikan Cakalang",
+  "Belut",
+  "Koaci",
+  "Batu Bata",
+  "Kolor",
+  "Merpati",
+  "Aligator",
+  "Tisu Basah",
+  "Galon",
+  "Ember",
 ];
 
 export default function App() {
@@ -72,7 +82,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-green-500 to-90% ...">
-      <div className="container">
+      <div className="container max-w-md">
         <div className="bg-white p-5 rounded-lg shadow-xl bg-opacity-40">
           <h1 className="text-5xl font-bold">Check Khodam</h1>
           <div className="w-full mt-10">
