@@ -25,10 +25,6 @@ const ListKhodam = [
   "Tidak Ada",
   "Tidak Ada",
   "Tidak Ada",
-  "Tidak Ada",
-  "Tidak Ada",
-  "Tidak Ada",
-  "Tidak Ada",
   "Ayam Geprek",
   "Ayam Warna Warni",
   "Gajah Duduk",
@@ -48,6 +44,8 @@ const ListKhodam = [
   "Ember",
   "Sarden",
   "Kaos Kaki",
+  "Tusuk Sate",
+  "Dont Look Back in Anger",
 ];
 
 export default function App() {
