@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import { useState } from "react";
 
-const khodam = [
+const ListKhodam = [
   "Sepeda Listrik",
   "Harimau Sumatra",
   "Celengan Kosong",
@@ -42,64 +42,89 @@ const khodam = [
 
 export default function App() {
   const [nama, setNama] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [khodamImageUrl, setKhodamImageUrl] = useState("");
+  const [khodam, setKhodam] = useState("");
+
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => setOpen(!open);
+
   const handleSubmit = () => {
     if (nama) {
-      handleOpen();
-      const filteredKhodam = khodam.filter((k) => k);
+      const filteredKhodam = ListKhodam.filter((k) => k);
       const randomKhodam =
         filteredKhodam[Math.floor(Math.random() * filteredKhodam.length)];
-      setImageUrl(randomKhodam);
+      let imageUrl = "";
+      setKhodam(randomKhodam);
+      if (randomKhodam === "Tidak Ada") {
+        imageUrl = "/img/tidakada.jpeg";
+      } else {
+        const formattedKhodam = randomKhodam.toLowerCase().replace(/ /g, "-");
+        imageUrl = `https://loremflickr.com/400/200/${encodeURIComponent(
+          formattedKhodam
+        )}`;
+      }
+
+      setKhodamImageUrl(imageUrl);
+      handleOpen();
     }
   };
+
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-green-500 to-90% ...">
-      <div className="bg-white p-5 rounded-lg shadow-xl bg-opacity-40">
-        <h1 className="text-5xl font-bold">Check Khodam</h1>
-        <div className="w-full mt-10">
-          <Input
-            label="Nama"
-            color="green"
-            value={nama}
-            onChange={(e) => setNama(e.target.value)}
-            error={!nama}
-            className="border-black"
-          />
-          <Button className="w-full mt-5" onClick={handleSubmit}>
-            Submit
-          </Button>
-          {imageUrl && (
+      <div className="container">
+        <div className="bg-white p-5 rounded-lg shadow-xl bg-opacity-40">
+          <h1 className="text-5xl font-bold">Check Khodam</h1>
+          <div className="w-full mt-10">
+            <Input
+              label="Nama"
+              color="green"
+              value={nama}
+              onChange={(e) => setNama(e.target.value)}
+              error={!nama}
+              className="border-black"
+            />
+            <Button className="w-full mt-5" onClick={handleSubmit}>
+              Submit
+            </Button>
+            <div className="mt-5">
+              <p className="italic text-center">
+                Created by{" "}
+                <a href="https://www.instagram.com/nazalprastya/?hl=id">
+                  Nazal
+                </a>
+              </p>
+            </div>
             <Result
-              nama={nama}
-              khodam={imageUrl}
               open={open}
               handleOpen={handleOpen}
+              nama={nama}
+              khodam={khodamImageUrl}
+              namaKhodam={khodam}
             />
-          )}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-function Result({ open, handleOpen, nama, khodam }) {
+function Result({ open, handleOpen, nama, khodam, namaKhodam }) {
   return (
     <Dialog open={open} handler={handleOpen}>
       <DialogHeader>Hasil</DialogHeader>
       <DialogBody>
         <h3 className="text-xl font-medium">Nama: {nama}</h3>
         <h4 className="text-xl font-medium">
-          Khodam: <span className="font-semibold">{khodam}</span>
+          Khodam: <span className="font-semibold">{namaKhodam}</span>
         </h4>
-        <img
-          src={`https://picsum.photos/seed/${encodeURIComponent(
-            khodam
-          )}/360/200`}
-          alt={khodam}
-          className="mt-5 rounded-lg shadow-md"
-        />
+        <div className="flex justify-center">
+          <img
+            src={khodam}
+            alt={namaKhodam}
+            className="mt-5 rounded-lg shadow-md text-center justify-center"
+          />
+        </div>
       </DialogBody>
       <DialogFooter>
         <Button
