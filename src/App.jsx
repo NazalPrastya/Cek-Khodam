@@ -12,7 +12,6 @@ import { useState } from "react";
 const ListKhodam = [
   "Sepeda Listrik",
   "Harimau Sumatra",
-  "Celengan Kosong",
   "Pengumpul Makanan",
   "Kereta Api",
   "Macan Garut",
