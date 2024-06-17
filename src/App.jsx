@@ -12,7 +12,6 @@ import { useState } from "react";
 const ListKhodam = [
   "Sepeda Listrik",
   "Harimau Sumatra",
-  "Pengumpul Makanan",
   "Kereta Api",
   "Macan Garut",
   "Domba Kuring",
@@ -69,9 +68,7 @@ export default function App() {
         imageUrl = "/img/tidakada.jpeg";
       } else {
         const formattedKhodam = randomKhodam.toLowerCase().replace(/ /g, "-");
-        imageUrl = `https://loremflickr.com/400/200/${encodeURIComponent(
-          formattedKhodam
-        )}`;
+        imageUrl = `/img/${encodeURIComponent(formattedKhodam)}.jpeg`;
       }
 
       setKhodamImageUrl(imageUrl);
