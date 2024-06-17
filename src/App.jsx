@@ -46,6 +46,8 @@ const ListKhodam = [
   "Tisu Basah",
   "Galon",
   "Ember",
+  "Sarden",
+  "Kaos Kaki",
 ];
 
 export default function App() {
